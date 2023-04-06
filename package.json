@@ -1,10 +1,9 @@
 {
   "name": "@parloa/knowflow-bot",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "build": "",
+    "build": "tsc",
+    "ts-check": "tsc --noEmit --lib ES2015 ./src/*.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,5 +18,19 @@
   "homepage": "https://github.com/massierc-parloa/knowflow-bot#readme",
   "dependencies": {
     "langchain": "^0.0.49"
+  },
+  "devDependencies": {
+    "@netlify/functions": "^1.4.0",
+    "@types/node": "^18.15.11",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "prettier": "^2.8.7",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.3"
   }
 }
