@@ -1,6 +1,6 @@
 import { Handler } from '@netlify/functions';
 
-const handler: Handler = async (req, res) => {
+const handler: Handler = async req => {
   console.log('req :>> ', req);
 
   return {
