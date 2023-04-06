@@ -1,0 +1,23 @@
+{
+  "name": "@parloa/knowflow-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/massierc-parloa/knowflow-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/massierc-parloa/knowflow-bot/issues"
+  },
+  "homepage": "https://github.com/massierc-parloa/knowflow-bot#readme",
+  "dependencies": {
+    "langchain": "^0.0.49"
+  }
+}
