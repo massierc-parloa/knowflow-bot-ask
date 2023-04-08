@@ -24,18 +24,18 @@ function delay(time: number) {
 }
 
 async function doStuff(_: string, responseUrl: string) {
-  await delay(2000);
+  await delay(500);
 
   try {
     await axios.post(
       responseUrl,
       {
-        replace_original: 'true',
+        replace_original: true,
         text: 'This should replace the original message',
       },
       { headers: { 'Content-Type': 'application/json' } }
     );
   } catch (err) {
-    console.log('err :>> ', err);
+    console.error('Error :>> ', err);
   }
 }
