@@ -1,15 +1,23 @@
 import { Handler } from '@netlify/functions';
 import axios from 'axios';
 
+import { ask } from './ask';
+
 const handler: Handler = async req => {
   if (!req.body) return { statusCode: 400 };
 
-  const payload = JSON.parse(req.body) as {
+  const { question, responseUrl } = JSON.parse(req.body) as {
     question: string;
     responseUrl: string;
   };
 
-  await doStuff(payload.question, payload.responseUrl);
+  try {
+    const answer = await ask(question);
+
+    await axios.post(responseUrl, answer);
+  } catch (err) {
+    console.error('Error :>> ', err);
+  }
 
   return {
     statusCode: 200,
@@ -18,24 +26,3 @@ const handler: Handler = async req => {
 };
 
 export { handler };
-
-function delay(time: number) {
-  return new Promise(resolve => setTimeout(resolve, time));
-}
-
-async function doStuff(_: string, responseUrl: string) {
-  await delay(500);
-
-  try {
-    await axios.post(
-      responseUrl,
-      {
-        replace_original: true,
-        text: 'This should replace the original message',
-      },
-      { headers: { 'Content-Type': 'application/json' } }
-    );
-  } catch (err) {
-    console.error('Error :>> ', err);
-  }
-}
