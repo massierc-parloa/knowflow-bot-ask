@@ -3,6 +3,8 @@
 
 [functions]
   included_files = ["data/**"]
+  node_bundler = "esbuild"
+  external_node_modules = ["hnswlib-node"]
 
 [[redirects]]
   from = "/"
