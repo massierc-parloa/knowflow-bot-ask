@@ -1,9 +1,9 @@
+import { ConversationalRetrievalQAChain } from 'langchain/chains';
 import { TextLoader } from 'langchain/document_loaders';
-import { CharacterTextSplitter } from 'langchain/text_splitter';
-import { HNSWLib } from 'langchain/vectorstores';
 import { OpenAIEmbeddings } from 'langchain/embeddings';
 import { OpenAI } from 'langchain/llms';
-import { ConversationalRetrievalQAChain } from 'langchain/chains';
+import { CharacterTextSplitter } from 'langchain/text_splitter';
+import { HNSWLib } from 'langchain/vectorstores';
 
 const FILES = [
   `${__dirname}/../data/eng/faqs.txt`,
@@ -41,5 +41,5 @@ export const ask = async (question: string) => {
     chat_history: [],
   });
 
-  return res.text;
+  return res.text as string;
 };
