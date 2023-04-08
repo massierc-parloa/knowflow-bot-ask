@@ -20,7 +20,6 @@ const splitter = new CharacterTextSplitter({
 const model = new OpenAI({});
 
 export const ask = async (question: string) => {
-  console.log('FILES :>> ', FILES);
   const loaders = FILES.map(file => new TextLoader(file));
   const docs = await Promise.all(loaders.map(loader => loader.load()));
 
