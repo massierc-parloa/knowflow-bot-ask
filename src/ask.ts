@@ -1,4 +1,4 @@
-import fs from 'fs';
+import { HierarchicalNSW } from 'hnswlib-node';
 import { ConversationalRetrievalQAChain } from 'langchain/chains';
 import { TextLoader } from 'langchain/document_loaders';
 import { OpenAIEmbeddings } from 'langchain/embeddings';
@@ -21,11 +21,7 @@ const splitter = new CharacterTextSplitter({
 const model = new OpenAI({});
 
 export const ask = async (question: string) => {
-  fs.readdir(`${__dirname}/../node_modules`, (err, files) => {
-    files.forEach(file => {
-      console.log(file);
-    });
-  });
+  console.log('HierarchicalNSW :>> ', HierarchicalNSW);
 
   const loaders = FILES.map(file => new TextLoader(file));
   const docs = await Promise.all(loaders.map(loader => loader.load()));
