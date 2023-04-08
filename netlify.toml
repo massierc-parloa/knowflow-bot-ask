@@ -3,6 +3,7 @@
 
 [functions]
   included_files = ["data/**"]
+  external_node_modules = ["hnswlib-node"]
 
 [[redirects]]
   from = "/"
