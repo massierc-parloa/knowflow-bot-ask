@@ -1,20 +1,15 @@
-import { Handler } from '@netlify/functions';
+import { BackgroundHandler } from '@netlify/functions';
 import axios from 'axios';
 
-const handler: Handler = async req => {
-  if (!req.body) return { statusCode: 400 };
+const handler: BackgroundHandler = req => {
+  if (!req.body) return;
 
   const payload = JSON.parse(req.body) as {
     question: string;
     responseUrl: string;
   };
 
-  await doStuff(payload.question, payload.responseUrl);
-
-  return {
-    statusCode: 200,
-    body: 'done',
-  };
+  void doStuff(payload.question, payload.responseUrl);
 };
 
 export { handler };
