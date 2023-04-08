@@ -21,21 +21,21 @@ type SlashCommandPayload = {
 };
 
 const handler = ({ body }: { body: string }) => {
-  if (!body) return { statusCode: 400 };
+  // if (!body) return { statusCode: 400 };
 
-  const payload = parse(body) as SlashCommandPayload;
+  // const payload = parse(body) as SlashCommandPayload;
 
-  if (payload.command !== '/ask-eon') {
-    return {
-      statusCode: 200,
-      body: {
-        response_type: 'ephemeral',
-        text: 'Invalid command. Try /ask-eon',
-      },
-    };
-  }
+  // if (payload.command !== '/ask-eon') {
+  //   return {
+  //     statusCode: 200,
+  //     body: {
+  //       response_type: 'ephemeral',
+  //       text: 'Invalid command. Try /ask-eon',
+  //     },
+  //   };
+  // }
 
-  void doStuff(payload.text, payload.response_url);
+  // void doStuff(payload.text, payload.response_url);
 
   return {
     statusCode: 200,
