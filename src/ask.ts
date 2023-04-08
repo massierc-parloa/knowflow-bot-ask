@@ -1,5 +1,3 @@
-import 'hnswlib-node';
-
 import { ConversationalRetrievalQAChain } from 'langchain/chains';
 import { TextLoader } from 'langchain/document_loaders';
 import { OpenAIEmbeddings } from 'langchain/embeddings';
