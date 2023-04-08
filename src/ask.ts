@@ -1,4 +1,4 @@
-import * as hnswlib from 'hnswlib-node';
+import fs from 'fs';
 import { ConversationalRetrievalQAChain } from 'langchain/chains';
 import { TextLoader } from 'langchain/document_loaders';
 import { OpenAIEmbeddings } from 'langchain/embeddings';
@@ -21,7 +21,12 @@ const splitter = new CharacterTextSplitter({
 const model = new OpenAI({});
 
 export const ask = async (question: string) => {
-  console.log('hnswlib :>> ', hnswlib);
+  fs.readdir(`${__dirname}/../node_modules`, (err, files) => {
+    files.forEach(file => {
+      console.log(file);
+    });
+  });
+
   const loaders = FILES.map(file => new TextLoader(file));
   const docs = await Promise.all(loaders.map(loader => loader.load()));
 
