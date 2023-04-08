@@ -1,3 +1,4 @@
+import { Handler } from '@netlify/functions';
 import axios from 'axios';
 import { parse } from 'qs';
 
@@ -20,30 +21,32 @@ type SlashCommandPayload = {
   trigger_id: string;
 };
 
-const handler = ({ body }: { body: string }) => {
-  // if (!body) return { statusCode: 400 };
+// eslint-disable-next-line @typescript-eslint/require-await
+const handler: Handler = async ({ body }) => {
+  if (!body) return { statusCode: 400 };
 
-  // const payload = parse(body) as SlashCommandPayload;
+  const payload = parse(body) as SlashCommandPayload;
 
-  // if (payload.command !== '/ask-eon') {
-  //   return {
-  //     statusCode: 200,
-  //     body: {
-  //       response_type: 'ephemeral',
-  //       text: 'Invalid command. Try /ask-eon',
-  //     },
-  //   };
-  // }
+  if (payload.command !== '/ask-eon') {
+    return {
+      statusCode: 200,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        response_type: 'ephemeral',
+        text: 'Invalid command. Try /ask-eon',
+      }),
+    };
+  }
 
-  // void doStuff(payload.text, payload.response_url);
+  void doStuff(payload.text, payload.response_url);
 
   return {
     statusCode: 200,
-    body: {
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
       response_type: 'in_channel',
       text: 'Sure, just a moment...',
-    },
-    headers: { 'Content-Type': 'application/json' },
+    }),
   };
 };
 
